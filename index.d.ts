@@ -1080,7 +1080,7 @@ export type ConditionalFormattingRule = ExpressionRuleType | CellIsRuleType | To
 	| ContainsTextRuleType | TimePeriodRuleType | DataBarRuleType;
 
 
-export type RowValues = CellValue[] | { [key: string]: CellValue } | undefined | null; 
+export type RowValues = CellValue[] | { [key: string]: CellValue } | undefined | null;
 
 export interface ConditionalFormattingOptions {
 	ref: string;
@@ -1192,14 +1192,14 @@ export interface Worksheet {
 
 	/**
 	 * Tries to find and return row for row no, else undefined
-	 * 
+	 *
 	 * @param row The 1-index row number
 	 */
 	findRow(row: number): Row | undefined;
 
 	/**
 	 * Tries to find and return rows for row no start and length, else undefined
-	 * 
+	 *
 	 * @param start The 1-index starting row number
 	 * @param length The length of the expected array
 	 */
@@ -1333,7 +1333,12 @@ export interface Worksheet {
 	 * Using the image id from `Workbook.addImage`,
 	 * embed an image within the worksheet to cover a range
 	 */
-	addImage(imageId: number, range: string | { editAs?: string; } & ImageRange & { hyperlinks?: ImageHyperlinkValue } | { editAs?: string; } & ImagePosition & { hyperlinks?: ImageHyperlinkValue }): void;
+	 addImage(imageId: number, range: string | { editAs?: string; } & ImageRange & { hyperlinks?: ImageHyperlinkValue } | { editAs?: string; } & ImagePosition & { hyperlinks?: ImageHyperlinkValue } | { tl: {
+		nativeCol: number;
+		nativeRow: number;
+		nativeColOff: number;
+		nativeRowOff: number;}} & {ext: { width: number; height: number }}
+	): void;
 
 	getImages(): Array<{
 		type: 'image',
